@@ -6,14 +6,18 @@ import app from '../../src/app';
 
 describe('GET /reverse:urlParam', function () {
 
-    it('should response with json 200 and data property', async function () {
-        await request(app)
+    it('should response with json 200 and data property', function (done) {
+
+        request(app)
             .get('/reverse/param')
             .expect('Content-Type', /json/)
             .expect(200)
             .then((res) => {
                 expect(res.body).to.have.property('data');
-            });
+                done();
+            })
+            .catch(err => done(err));
+
     });
 
     it('should response the url param reversed with all vowels in uppercase', function (done) {
@@ -31,6 +35,7 @@ describe('GET /reverse:urlParam', function () {
                 done();
             })
             .catch(err => done(err));
+
     });
 
 });
