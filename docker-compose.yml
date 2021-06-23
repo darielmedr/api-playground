@@ -1,0 +1,15 @@
+version: '3'
+
+networks:
+  local-network:
+
+services:
+  api-playground:
+    container_name: api-playground
+    ports:
+      - '3001:3001'
+    environment:
+      - NODE_ENV=production,
+      - SIMPLE_ARRAY=get,update
+    networks:
+      - local-network

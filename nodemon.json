@@ -1,16 +1,15 @@
 {
-    "restartable": "rs",
+    "watch": [
+        "src"
+    ],
+    "ext": ".ts,.js",
     "ignore": [
         ".git",
         "node_modules/",
         "dist/",
-        "coverage/"
+        "coverage/",
+        ".nyc_output",
+        "config/"
     ],
-    "execMap": {
-        "ts": "node -r ts-node/register"
-    },
-    "env": {
-        "NODE_ENV": "development"
-    },
-    "ext": "js,json,ts"
+    "exec": "ts-node ./src/app.ts"
 }
