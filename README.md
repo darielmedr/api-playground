@@ -24,12 +24,12 @@ npm run dev
 
 ### Environment variables
 
-| Name                          | Description                    | Default Value                                       |
-| ----------------------------- | ------------------------------ | --------------------------------------------------- |
-| API_HOST                      | API host                       | `localhost`                                         |
-| API_PORT                      | API port                       | `3001`                                              |
-| NODE_ENV                      | Production or development mode | `development`                                       |
-| SIMPLE_ARRAY                  | API operations list            | `get, update`                                       |
+| Name         | Description                    | Default Value |
+| ------------ | ------------------------------ | ------------- |
+| API_HOST     | API host                       | `localhost`   |
+| API_PORT     | API port                       | `3001`        |
+| NODE_ENV     | Production or development mode | `development` |
+| SIMPLE_ARRAY | API operations list            | `get, update` |
 
 ## Running the tests
 
@@ -64,27 +64,3 @@ npm run test:coverage
 ```shell
 npm run release
 ```
-
-## Docker
-
-### Generate development Docker image
-
-```shell
-npm run build:dev-image
-```
-
-### Generate production Docker image
-
-```shell
-npm run build:pro-image
-```
-
-### Docker compose
-
-```shell
-docker-compose up greeting
-```
-
-### Docker hub repository
-
-[Greeting repository](https://hub.docker.com/repository/docker/yosama/greeting)

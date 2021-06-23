@@ -1,7 +1,7 @@
 {
   "name": "api-playground",
   "version": "1.0.0",
-  "description": "",
+  "description": "PLayground API REST",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
@@ -10,7 +10,7 @@
     "test:coverage": "nyc npm run test",
     "release": "standard-version"
   },
-  "author": "",
+  "author": "Dariel Medina Rodriguez",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
