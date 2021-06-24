@@ -9,9 +9,9 @@ Use this project on your local machine for development and testing purposes.
 ### Download and install dependencies
 
 ```shell
-$ git clone https://github.com/darielmedr/api-playground.git
-$ cd api-playground
-$ npm install
+~$ git clone https://github.com/darielmedr/api-playground.git
+~$ cd api-playground
+~$ npm install
 ```
 
 ### Usage
