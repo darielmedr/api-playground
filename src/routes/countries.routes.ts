@@ -1,4 +1,5 @@
-import { Router } from "express";
+import { Request, Response, Router } from "express";
+import { oneOf, query } from "express-validator";
 import Container from "typedi";
 import CountryController from "../controllers/countries.controller";
 
@@ -13,7 +14,10 @@ class Routes {
     }
 
     public setRoutes(): void {
-        this.router.get('/', (req, res) => this.controller.getCountries(req, res));
+        this.router.get('/',
+            query('filter', 'filter must be a string').optional().isString(),
+            query('order', "order must be 'asc' | 'desc'").optional().isIn(['asc', 'desc']),
+            (req: Request, res: Response) => this.controller.getCountries(req, res));
     }
 
     public getRoutes(): Router {

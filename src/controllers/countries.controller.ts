@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { Result, ValidationError, validationResult } from "express-validator";
 import { Service } from "typedi";
 import CountryService from '../services/countries.service';
 import { CountriesQueryParams } from '../models/countries-query-params.model';
@@ -16,20 +17,20 @@ export default class CountryController {
     public async getCountries(req: Request, res: Response): Promise<Response> {
 
         try {
+
+            const errors: Result<ValidationError> = validationResult(req);
+
+            if (!errors.isEmpty()) return res.sendStatus(400);
+
             const { filter, order } = req.query;
 
-            if (
-                (filter && typeof filter !== 'string') ||
-                (order && !(order.toString() in OrderParam))
-            ) return res.sendStatus(400)
-
             const queryParams: CountriesQueryParams = {
-                filter: filter ? filter : undefined,
+                filter: filter ? filter as string : undefined,
                 order: order ? order as OrderParamType : undefined
             };
 
             const countries = await this.countryService.getCountries(queryParams);
-            return res.status(200).json({data: countries});
+            return res.status(200).json({ data: countries });
 
         } catch (error) {
             log.error(error);

@@ -1,4 +1,5 @@
-import { Router } from "express";
+import { Request, Response, Router } from "express";
+import { oneOf, query } from "express-validator";
 import Container from "typedi";
 import ApiOperationController from "../controllers/api-operation.controller";
 
@@ -13,7 +14,12 @@ class Routes {
     }
 
     public setRoutes(): void {
-        this.router.put('/', (req, res) => this.controller.updateApiOperations(req, res));
+        this.router.put('/',
+            oneOf([
+                query('start', 'start must be a string').isString(),
+                query('end', 'end must be a string').isString()
+            ]),
+            (req: Request, res: Response) => this.controller.updateApiOperations(req, res));
     }
 
     public getRoutes(): Router {

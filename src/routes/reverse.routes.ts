@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Request, Response, Router } from "express";
 import Container from "typedi";
 import ReverseController from "../controllers/reverse.controller";
 
@@ -13,7 +13,8 @@ class Routes {
     }
 
     public setRoutes(): void {
-        this.router.get('/:urlParam', (req, res) => this.controller.getReversedData(req, res));
+        this.router.get('/:urlParam',
+            (req: Request, res: Response) => this.controller.getReversedData(req, res));
     }
 
     public getRoutes(): Router {

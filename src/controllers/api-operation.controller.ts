@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { Result, ValidationError, validationResult } from "express-validator";
 import { Service } from "typedi";
 import { ApiOperationsQueryParams } from "../models/api-op-query-params.model";
 import ApiOperationsService from '../services/api-operations.service';
@@ -13,17 +14,15 @@ export default class ApiOperationController {
 
     public updateApiOperations(req: Request, res: Response): Response {
 
-        const { start: startQuery, end: endQuery } = req.query;
+        const errors: Result<ValidationError> = validationResult(req);
 
-        if (
-            (!startQuery && !endQuery) ||
-            (startQuery && typeof startQuery !== 'string') ||
-            (endQuery && typeof endQuery !== 'string')
-        ) return res.sendStatus(400)
+        if (!errors.isEmpty()) return res.sendStatus(400)
+
+        const { start, end }: ApiOperationsQueryParams = req.query as ApiOperationsQueryParams;
 
         const queryParams: ApiOperationsQueryParams = {
-            start: startQuery ? startQuery : undefined,
-            end: endQuery ? endQuery : undefined
+            start: start,
+            end: end
         };
 
         const apiOperations: string[] = this.apiOperationsService.updateApiOperations(queryParams);
