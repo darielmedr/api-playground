@@ -31,7 +31,7 @@ describe('GET /reverse:urlParam', function () {
             .expect(200)
             .expect('{"data":"EtElEd"}')
             .then(response => {
-                assert(response.body.data, processedParam);
+                expect(response.body.data).to.equal(processedParam);
                 done();
             })
             .catch(err => done(err));
