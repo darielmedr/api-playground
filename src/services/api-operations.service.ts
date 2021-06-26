@@ -8,7 +8,7 @@ export default class ApiOperationsService {
     private apiOperations: string[] = [];
 
     constructor() {
-        const operationsDefault = config.get('simpleArray') as string[];
+        const operationsDefault = process.env.SIMPLE_ARRAY || config.get('simpleArray') as string[];
         this.apiOperations.push(...operationsDefault);
     }
 
