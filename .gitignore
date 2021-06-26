@@ -7,7 +7,7 @@
 # Only exists if Bazel was run
 /bazel-out
 # Nyc output
-/.nyc_output
+.nyc_output
 
 # dependencies
 /node_modules
