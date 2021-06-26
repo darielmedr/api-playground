@@ -13,6 +13,30 @@ class Routes {
     }
 
     public setRoutes(): void {
+
+        /**
+         * @swagger
+         * /reverse/{urlParam}:
+         *   get:
+         *     description: Return the string you sent (by url param) but reversed with all vowels in uppercase.
+         *     parameters:
+         *       - name: urlParam
+         *         description: the string value to be processed
+         *         in: path
+         *         schema:
+         *           type: string
+         *         required: true
+         *     responses:
+         *       '200':
+         *         description: Success.
+         *         content:
+         *           application/json:
+         *             schema:
+         *               type: object
+         *               properties:
+         *                 data:
+         *                   type: string
+         */
         this.router.get('/:urlParam',
             (req: Request, res: Response) => this.controller.getReversedData(req, res));
     }

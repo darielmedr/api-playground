@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import ReverseService from "services/reverse.service";
+import ReverseService from "../../src/services/reverse.service";
 
 
 

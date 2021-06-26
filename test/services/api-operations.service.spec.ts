@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { ApiOperationsQueryParams } from "models/api-op-query-params.model";
-import ApiOperationsService from "services/api-operations.service";
+import { ApiOperationsQueryParams } from "../../src/models/api-op-query-params.model";
+import ApiOperationsService from "../../src/services/api-operations.service";
 
 describe('ApiOperationsService updateApiOperations()', function () {
 
